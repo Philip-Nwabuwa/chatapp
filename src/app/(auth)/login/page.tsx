@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -32,8 +33,11 @@ export default function Home() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+    toast.success(
+      <div>
+        <p>Your username is {values.username}</p>
+      </div>
+    );
     console.log(values.username);
   }
   return (
