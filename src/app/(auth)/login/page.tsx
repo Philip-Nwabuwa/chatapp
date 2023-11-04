@@ -17,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { toast } from "react-toastify";
+import GoogleSignIn from "@/components/GoogleSignIn";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -64,6 +65,7 @@ export default function Home() {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
+      <GoogleSignIn />
     </main>
   );
 }
