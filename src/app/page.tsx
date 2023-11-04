@@ -1,8 +1,13 @@
+import Link from "next/link";
+import React from "react";
 
-export default function Home() {
+const page = () => {
   return (
-    <main className='underline'>
-      Hello
-    </main>
-  )
-}
+    <div>
+      <h1>Home Page</h1>
+      <Link href="/login">Login Page</Link>
+    </div>
+  );
+};
+
+export default page;
