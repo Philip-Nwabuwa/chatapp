@@ -1,6 +1,6 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import LoginForm from "@/components/modules/LoginForm";
-import { getServerSession } from "next-auth/next";
+import RegisterForm from "@/components/modules/RegisterForm";
+import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -9,9 +9,10 @@ const page = async () => {
   if (session?.user?.email) {
     redirect("/dashboard");
   }
+
   return (
     <div>
-      <LoginForm />
+      <RegisterForm />
     </div>
   );
 };

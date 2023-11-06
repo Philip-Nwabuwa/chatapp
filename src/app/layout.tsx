@@ -4,6 +4,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import TanstackProvider from "@/provider/TanstackProvider";
+import { EdgeStoreProvider } from "@/lib/edgestore";
+import NextAuthProvider from "@/provider/NextAuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TanstackProvider>
-          <main>{children}</main>
-          <ToastContainer />
-        </TanstackProvider>
+        <NextAuthProvider>
+          <TanstackProvider>
+            <EdgeStoreProvider>
+              <main>{children}</main>
+            </EdgeStoreProvider>
+            <ToastContainer />
+          </TanstackProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );

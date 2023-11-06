@@ -54,7 +54,7 @@ export const authOptions = {
             console.log("User does not exist");
             console.log(name, email, image);
 
-            const url = `${process.env.NEXTAUTH_URL}api/auth/user`;
+            const url = `${process.env.NEXTAUTH_URL}/api/auth/user`;
             const data = await fetch(url, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
