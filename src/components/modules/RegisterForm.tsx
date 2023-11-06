@@ -10,8 +10,6 @@ import { Camera } from "lucide-react";
 import { useEdgeStore } from "@/lib/edgestore";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { toast } from "react-toastify";
 import {
   Form,
   FormControl,
@@ -23,6 +21,7 @@ import {
 import { Input } from "../ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
+import { toastError, toastSuccess } from "@/lib/utils";
 
 interface CustomError {
   response?: {
@@ -56,12 +55,6 @@ const formSchema = z
 const RegisterForm = () => {
   const { edgestore } = useEdgeStore();
   const router = useRouter();
-
-  const Session = useSession();
-
-  if (Session?.data) {
-    router.push("/dashboard");
-  }
   const inputRef = useRef<HTMLInputElement>(null);
 
   const { data, isError, mutateAsync } = useMutation({
@@ -71,13 +64,11 @@ const RegisterForm = () => {
     onError: (err: CustomError) => {
       console.log(err);
       if (err.response) {
-        toast.error(
-          <div>
-            <p>{err.response.data.message}</p>
-          </div>
+        toastError(
+          err.response.data.message || "An error occurred. Please try again."
         );
       } else {
-        toast.error("An error occurred.");
+        toastError("An error occurred.");
       }
     },
   });
@@ -109,7 +100,7 @@ const RegisterForm = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       if (!imageFile) {
-        toast.error("Please upload an image.");
+        toastError("Please upload an image.");
         return;
       }
       const res = await edgestore.publicFiles.upload({
@@ -123,11 +114,7 @@ const RegisterForm = () => {
       const response = await mutateAsync(values);
       console.log(response);
 
-      toast.success(
-        <div>
-          <p>Registration successful!</p>
-        </div>
-      );
+      toastSuccess("Account successfully created.");
 
       setTimeout(() => {
         router.push("/login");

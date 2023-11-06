@@ -21,6 +21,7 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { toastError, toastSuccess } from "@/lib/utils";
 
 export const loginFormSchema = z.object({
   email: z.string().email({
@@ -122,22 +123,12 @@ const LoginForm = () => {
       });
 
       if (res?.error) {
-        toast.error(
-          <div>
-            <h1>Something went wrong</h1>
-            <p>Please try again.</p>
-          </div>
-        );
+        toastError("Something went wrong. Please try again later.");
         return;
       }
 
       if (res?.ok) {
-        toast.success(
-          <div>
-            <h1>Login successfully</h1>
-            <p>Redirecting to dashboard...</p>
-          </div>
-        );
+        toastSuccess("Login successfully. Redirecting to dashboard...");
 
         setTimeout(() => {
           router.push("/dashboard");
@@ -160,21 +151,12 @@ const LoginForm = () => {
       });
 
       if (res?.error) {
-        toast.error(
-          <div>
-            <h1>Invalid Credentials</h1>
-          </div>
-        );
+        toastError("Invalid credentials, try again.");
         return;
       }
 
       if (res?.ok) {
-        toast.success(
-          <div>
-            <h1>Login successfully</h1>
-            <p>Redirecting to dashboard...</p>
-          </div>
-        );
+        toastSuccess("Login successfully. Redirecting to dashboard...");
 
         setTimeout(() => {
           router.push("/dashboard");
