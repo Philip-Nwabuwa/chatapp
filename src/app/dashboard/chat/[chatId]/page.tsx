@@ -6,9 +6,20 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Messages from "@/components/Messages";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
-import { FileImage, Mic, Paperclip, Send, SmilePlus } from "lucide-react";
+import {
+  ArrowLeft,
+  FileImage,
+  Mic,
+  MoreHorizontal,
+  Paperclip,
+  Phone,
+  Search,
+  Send,
+  SmilePlus,
+} from "lucide-react";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 // The following generateMetadata functiion was written after the video and is purely optional
@@ -66,9 +77,12 @@ const page = async ({ params }: PageProps) => {
 
   return (
     <div className="flex-1 justify-between flex flex-col h-full">
-      <div className="bg-white rounded-xl w-full h-full md:max-h-[6rem] mb-1">
+      <div className="bg-white rounded-xl w-full h-[4.5rem] md:max-h-[6rem] mb-1">
         <div className="h-full flex items-center justify-between px-6">
           <div className="flex items-center gap-3">
+            <Link href="/dashboard" className="cursor-pointer">
+              <ArrowLeft />
+            </Link>
             <Avatar>
               {user?.image && (
                 <AvatarImage src={`${user.image}`} alt="Preview" />
@@ -82,11 +96,22 @@ const page = async ({ params }: PageProps) => {
               <p className="text-xs">Online</p>
             </div>
           </div>
-          <div>Profile</div>
+          <div className="flex items-center gap-4">
+            <div>Profile</div>
+            <div>
+              <Search />
+            </div>
+            <div>
+              <Phone />
+            </div>
+            <div>
+              <MoreHorizontal />
+            </div>
+          </div>
         </div>
       </div>
       <Messages />
-      <div className="bg-white rounded-xl w-full h-full md:max-h-[5rem] mt-1">
+      <div className="bg-white rounded-xl w-full h-[4.5rem] md:max-h-[6rem] mt-1">
         <div className="h-full flex flex-row items-center gap-2 px-6">
           <Paperclip />
           <Input></Input>

@@ -1,12 +1,21 @@
 import MobileChatLayout from "@/components/modules/MobileChatLayout";
 import { Input } from "@/components/ui/input";
 import {
+  AlignJustify,
   Bell,
   MessagesSquare,
   Sparkles,
   UserCircle,
   UserPlus,
 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 
@@ -18,11 +27,7 @@ const layout = ({ children }: LayoutProps) => {
   return (
     <div className="bg-slate-300 ">
       <div className="w-full flex h-screen">
-        <div className="md:hidden">
-          <MobileChatLayout />
-        </div>
-
-        <div className="bg-black text-white rounded-r-xl hidden md:flex h-full w-full md:max-w-[6rem] lg:max-w-[8rem] grow flex-col gap-y-5 overflow-y-auto border-r  px-6">
+        <div className="bg-black text-white lg:flex hidden rounded-r-xl h-full w-full lg:max-w-[8rem] grow flex-col gap-y-5 overflow-y-auto px-6">
           <div className="h-full grid grid-rows-3 ">
             <div className="flex items-start justify-center pt-6">
               <Link href="/dashboard">
@@ -42,19 +47,31 @@ const layout = ({ children }: LayoutProps) => {
           </div>
         </div>
 
-        <div className="hidden md:flex h-full w-full mx-1 lg:max-w-xs md:max-w-[12rem] grow flex-col overflow-y-auto">
-          <div className="bg-white rounded-xl w-full h-full md:max-h-[6rem] mb-1">
-            <nav className="flex">
-              <ul role="list" className="flex flex-1 flex-col gap-y-7">
-                <Link href="/dashboard/chat/1">
-                  <li>sideChat1</li>
-                </Link>
-              </ul>
+        <div className="md:flex hidden h-full w-full mx-1 lg:max-w-xs md:max-w-[22rem] grow flex-col overflow-y-auto">
+          <div className="bg-white rounded-xl w-full h-[4.5rem] md:max-h-[6rem] mb-1">
+            <nav className="flex h-full items-center justify-between gap-6 px-2">
+              <div className="lg:hidden flex">
+                <DropdownMenu>
+                  <DropdownMenuTrigger>
+                    <AlignJustify />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>Profile</DropdownMenuItem>
+                    <DropdownMenuItem>Billing</DropdownMenuItem>
+                    <DropdownMenuItem>Team</DropdownMenuItem>
+                    <DropdownMenuItem>Subscription</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+              DevChat
+              <Input className="rounded-full" placeholder="Search"></Input>
             </nav>
           </div>
 
           <div className="bg-white rounded-xl w-full h-full">
-            <nav className="flex flex-1 flex-col">
+            <nav className="flex flex-1 flex-col px-2">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
                 <Link href="/dashboard/chat/1">
                   <li>sideChat2</li>

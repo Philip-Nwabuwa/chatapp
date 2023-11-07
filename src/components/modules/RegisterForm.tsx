@@ -6,7 +6,7 @@ import * as z from "zod";
 import axios from "axios";
 
 import { useRef, useState } from "react";
-import { Camera } from "lucide-react";
+import { Camera, ImagePlus } from "lucide-react";
 import { useEdgeStore } from "@/lib/edgestore";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -143,7 +143,7 @@ const RegisterForm = () => {
                 />
               )}
               <AvatarFallback>
-                <Camera />
+                <ImagePlus />
               </AvatarFallback>
             </Avatar>
           </div>
