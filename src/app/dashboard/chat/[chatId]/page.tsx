@@ -5,6 +5,14 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Messages from "@/components/Messages";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import {
   ArrowLeft,
@@ -80,7 +88,7 @@ const page = async ({ params }: PageProps) => {
       <div className="bg-white rounded-xl w-full h-[4.5rem] md:max-h-[6rem] mb-1">
         <div className="h-full flex items-center justify-between px-6">
           <div className="flex items-center gap-3">
-            <Link href="/dashboard" className="cursor-pointer">
+            <Link href="/dashboard" className="flex md:hidden cursor-pointer">
               <ArrowLeft />
             </Link>
             <Avatar>
@@ -97,15 +105,27 @@ const page = async ({ params }: PageProps) => {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <div>Profile</div>
+            <div className="hidden md:flex">Profile</div>
             <div>
               <Search />
             </div>
-            <div>
+            <div className="hidden lg:flex">
               <Phone />
             </div>
             <div>
-              <MoreHorizontal />
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <MoreHorizontal />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <DropdownMenuItem>Billing</DropdownMenuItem>
+                  <DropdownMenuItem>Team</DropdownMenuItem>
+                  <DropdownMenuItem>Subscription</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         </div>

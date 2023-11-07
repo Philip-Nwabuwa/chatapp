@@ -13,6 +13,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
+import ChatList from "@/components/modules/ChatList";
 
 const page = async () => {
   const session = await getServerSession(authOptions);
@@ -22,8 +23,8 @@ const page = async () => {
   return (
     <div className="flex">
       <div className="flex md:hidden h-screen w-full mx-1 lg:max-w-xs md:max-w-[22rem] grow flex-col overflow-y-auto">
-        <div className="bg-white rounded-xl w-full h-[4.5rem] md:max-h-[6rem] mb-1">
-          <nav className="flex h-full items-center justify-between gap-6 px-2">
+        <div className="bg-white rounded-xl w-full h-[5rem] md:max-h-[6rem] mb-1">
+          <nav className="flex h-full items-center justify-between gap-x-6 px-2">
             <div className="lg:hidden flex">
               <DropdownMenu>
                 <DropdownMenuTrigger>
@@ -46,15 +47,13 @@ const page = async () => {
 
         <div className="bg-white rounded-xl w-full h-full">
           <nav className="flex flex-1 flex-col px-2">
-            <ul role="list" className="flex flex-1 flex-col gap-y-7">
-              <Link href="/dashboard/chat/1">
-                <li>sideChat2</li>
-              </Link>
-            </ul>
+            <ChatList />
           </nav>
         </div>
       </div>
-      <div className="md:flex hidden">Hello</div>
+      <div className="md:flex hidden bg-white text-black rounded-xl w-full h-screen">
+        Hello
+      </div>
     </div>
   );
 };

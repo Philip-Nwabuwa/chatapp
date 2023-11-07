@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import React, { ReactNode } from "react";
+import ChatList from "@/components/modules/ChatList";
 
 interface LayoutProps {
   children: ReactNode;
@@ -48,7 +49,7 @@ const layout = ({ children }: LayoutProps) => {
         </div>
 
         <div className="md:flex hidden h-full w-full mx-1 lg:max-w-xs md:max-w-[22rem] grow flex-col overflow-y-auto">
-          <div className="bg-white rounded-xl w-full h-[4.5rem] md:max-h-[6rem] mb-1">
+          <div className="bg-white rounded-xl w-full h-[5rem] lg:max-h-[6rem] mb-1">
             <nav className="flex h-full items-center justify-between gap-6 px-2">
               <div className="lg:hidden flex">
                 <DropdownMenu>
@@ -70,13 +71,10 @@ const layout = ({ children }: LayoutProps) => {
             </nav>
           </div>
 
+          {/* mobile chat list */}
           <div className="bg-white rounded-xl w-full h-full">
-            <nav className="flex flex-1 flex-col px-2">
-              <ul role="list" className="flex flex-1 flex-col gap-y-7">
-                <Link href="/dashboard/chat/1">
-                  <li>sideChat2</li>
-                </Link>
-              </ul>
+            <nav className="flex px-2">
+              <ChatList />
             </nav>
           </div>
         </div>
