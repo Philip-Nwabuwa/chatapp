@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 import {
   Bell,
+  LogOut,
   MessagesSquare,
   Plus,
   Settings,
@@ -12,12 +13,13 @@ import {
 import Link from "next/link";
 import React, { ReactNode } from "react";
 import ChatList from "@/components/modules/ChatList";
+import Logout from "@/components/Logout";
 
 interface LayoutProps {
   children: ReactNode;
 }
 
-const layout = ({ children }: LayoutProps) => {
+const layout = async ({ children }: LayoutProps) => {
   return (
     <div className="bg-slate-300 ">
       <div className="w-full flex h-screen">
@@ -40,8 +42,8 @@ const layout = ({ children }: LayoutProps) => {
                 <Settings />
               </Link>
             </div>
-            <div className="flex items-end justify-center pb-6">
-              <UserCircle />
+            <div className="flex items-end justify-center cursor-pointer pb-6">
+              <Logout />
             </div>
           </div>
         </div>
@@ -56,7 +58,7 @@ const layout = ({ children }: LayoutProps) => {
                   className="rounded-full lg:max-w-[13rem] max-w-[10rem]"
                   placeholder="Search"
                 ></Input>
-                <div className="bg-black text-white cursor-pointer flex items-center justify-center h-[3rem] w-[3rem] rounded-full">
+                <div className="bg-black text-white cursor-pointer flex items-center justify-center h-[2.5rem] w-[2.5rem] rounded-full">
                   <Plus />
                 </div>
               </div>
@@ -71,7 +73,7 @@ const layout = ({ children }: LayoutProps) => {
           </div>
         </div>
 
-        <aside className=" max-h-screen w-full">{children}</aside>
+        <aside className="h-full max-h-screen w-full">{children}</aside>
       </div>
     </div>
   );

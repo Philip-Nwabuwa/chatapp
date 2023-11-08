@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import ChatList from "@/components/modules/ChatList";
 import Link from "next/link";
+import Logout from "@/components/Logout";
 
 const page = async () => {
   const session = await getServerSession(authOptions);
@@ -42,6 +43,9 @@ const page = async () => {
                       <p className="text-base">Settings</p>
                     </Link>
                   </DropdownMenuItem>
+                  <div className="pt-4 px-2 text-red-500">
+                    <Logout />
+                  </div>
                 </DropdownMenuContent>
               </DropdownMenu>
               <h1 className="text-lg font-bold">Dev Chat</h1>
