@@ -3,6 +3,7 @@
 // import { fetchRedis } from "@/helpers/redis";
 // import { messageArrayValidator } from "@/lib/validations/message";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import MessageInput from "@/components/MessageInput";
 import Messages from "@/components/Messages";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -29,6 +30,7 @@ import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { SetStateAction, useState } from "react";
 
 // The following generateMetadata functiion was written after the video and is purely optional
 export async function generateMetadata({
@@ -121,9 +123,6 @@ const page = async ({ params }: PageProps) => {
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>Profile</DropdownMenuItem>
-                  <DropdownMenuItem>Billing</DropdownMenuItem>
-                  <DropdownMenuItem>Team</DropdownMenuItem>
-                  <DropdownMenuItem>Subscription</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
@@ -131,15 +130,7 @@ const page = async ({ params }: PageProps) => {
         </div>
       </div>
       <Messages />
-      <div className="bg-white w-full h-[4.5rem] md:max-h-[6rem] mt-1">
-        <div className="h-full flex flex-row items-center gap-2 px-6">
-          <Paperclip />
-          <Input></Input>
-          <SmilePlus />
-          <Mic />
-          <Send />
-        </div>
-      </div>
+      <MessageInput />
     </div>
   );
 };

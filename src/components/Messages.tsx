@@ -25,10 +25,19 @@ const Messages = ({}) => {
   return (
     <div
       id="messages"
-      className="bg-white text-black flex h-full flex-1 flex-col-reverse gap-4 px-6 overflow-y-auto"
+      className="bg-white text-black flex h-full flex-1 flex-col-reverse gap-4 px-6"
     >
       <div ref={scrollDownRef} />
-      meassages
+      <div className="flex justify-end">
+        <div className="w-fit bg-black text-white py-2 px-4 rounded-s-lg rounded-t-lg">
+          meassages
+        </div>
+      </div>
+      <div className="flex justify-start">
+        <div className="w-fit bg-black text-white py-2 px-4 rounded-e-lg rounded-t-lg">
+          meassages
+        </div>
+      </div>
     </div>
   );
 };
