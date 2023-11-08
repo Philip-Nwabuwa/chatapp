@@ -39,12 +39,12 @@ export async function generateMetadata({
   const session = await getServerSession(authOptions);
   if (!session) notFound();
 
-  const [userId1, userId2] = params.chatId.split("--");
-  const { user } = session;
+  // const [userId1, userId2] = params.chatId.split("--");
+  // const { user } = session;
 
-  const chatPartnerId = user?.email === userId1 ? userId2 : userId1;
+  // const chatPartnerId = user?.email === userId1 ? userId2 : userId1;
 
-  return { title: `Dev-Chat | ${chatPartnerId} chat` };
+  // return { title: `Dev-Chat | ${chatPartnerId} chat` };
 }
 
 interface PageProps {
@@ -67,7 +67,7 @@ const page = async ({ params }: PageProps) => {
 
   const { user } = session;
 
-  const [userId1, userId2] = chatId.split("--");
+  // const [userId1, userId2] = chatId.split("--");
 
   //   if (user.id !== userId1 && user.id !== userId2) {
   //     notFound();
@@ -85,7 +85,7 @@ const page = async ({ params }: PageProps) => {
 
   return (
     <div className="flex-1 justify-between flex flex-col h-full">
-      <div className="bg-white rounded-xl w-full h-[4.5rem] md:max-h-[6rem] mb-1">
+      <div className="bg-white w-full h-[4.5rem] md:max-h-[6rem] mb-1">
         <div className="h-full flex items-center justify-between px-6">
           <div className="flex items-center gap-3">
             <Link href="/dashboard" className="flex md:hidden cursor-pointer">
@@ -117,7 +117,7 @@ const page = async ({ params }: PageProps) => {
                 <DropdownMenuTrigger>
                   <MoreHorizontal />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent className="mt-[1.5rem] mr-2">
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -131,7 +131,7 @@ const page = async ({ params }: PageProps) => {
         </div>
       </div>
       <Messages />
-      <div className="bg-white rounded-xl w-full h-[4.5rem] md:max-h-[6rem] mt-1">
+      <div className="bg-white w-full h-[4.5rem] md:max-h-[6rem] mt-1">
         <div className="h-full flex flex-row items-center gap-2 px-6">
           <Paperclip />
           <Input></Input>

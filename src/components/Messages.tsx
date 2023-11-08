@@ -25,7 +25,7 @@ const Messages = ({}) => {
   return (
     <div
       id="messages"
-      className="bg-white text-black rounded-xl flex h-full flex-1 flex-col-reverse gap-4 px-6 overflow-y-auto"
+      className="bg-white text-black flex h-full flex-1 flex-col-reverse gap-4 px-6 overflow-y-auto"
     >
       <div ref={scrollDownRef} />
       meassages
