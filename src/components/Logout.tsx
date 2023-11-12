@@ -45,7 +45,7 @@ const Logout = () => {
             <AlertDialogCancel>Cancel</AlertDialogCancel>
 
             <AlertDialogAction>
-              <div onClick={handleSignOut}>Continue</div>
+              <div onClick={handleSignOut}>Log Out</div>
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

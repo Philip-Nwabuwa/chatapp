@@ -1,38 +1,20 @@
-import { useUser } from "@/hooks/userauth";
-import axios from "axios";
-import Image from "next/image";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import User from "@/components/modules/User";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import React from "react";
 
 const page = async () => {
-  // const userDetail = await useUser();
-  // const user = userDetail?.user;
-  // const email = user?.email;
-  // const url = `${process.env.NEXTAUTH_URL}/api/user-details`;
-  // axios
-  //   .post(url)
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
+  const session = await getServerSession(authOptions);
+  const userEmail = session?.user?.email;
+  if (!session?.user?.email) {
+    redirect("/login");
+  }
 
   return (
-    <section>
-      settings
-      {/* {user?.image && (
-        <Image
-          alt="Profile Image"
-          width={100}
-          height={100}
-          src={`${user.image}`}
-        />
-      )}
-      <div>
-        <p>{user?.email}</p>
-        <p>{user?.name}</p>
-      </div> */}
-    </section>
+    <div>
+      <User email={userEmail} />
+    </div>
   );
 };
 
