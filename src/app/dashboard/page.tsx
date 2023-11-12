@@ -17,7 +17,7 @@ import Logout from "@/components/Logout";
 const page = async () => {
   const session = await getServerSession(authOptions);
   const user = session?.user;
-  console.log(user);
+  // console.log(user);
 
   return (
     <div className="flex">

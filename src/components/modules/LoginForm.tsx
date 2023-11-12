@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
-import { toast } from "react-toastify";
 import {
   Form,
   FormControl,

@@ -57,7 +57,7 @@ const RegisterForm = () => {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { data, isError, mutateAsync } = useMutation({
+  const { data, mutateAsync } = useMutation({
     mutationFn: (values: any) => {
       return axios.post("/api/auth/register", values);
     },
