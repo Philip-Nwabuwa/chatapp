@@ -4,22 +4,23 @@ import Image from "next/image";
 import React from "react";
 
 const page = async () => {
-  const userDetail = await useUser();
-  const user = userDetail?.user;
-  const email = user?.email;
-  const url = `${process.env.NEXTAUTH_URL}/api/user-details`;
-  axios
-    .post(url)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  // const userDetail = await useUser();
+  // const user = userDetail?.user;
+  // const email = user?.email;
+  // const url = `${process.env.NEXTAUTH_URL}/api/user-details`;
+  // axios
+  //   .post(url)
+  //   .then(function (response) {
+  //     console.log(response);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
 
   return (
     <section>
-      {user?.image && (
+      settings
+      {/* {user?.image && (
         <Image
           alt="Profile Image"
           width={100}
@@ -30,7 +31,7 @@ const page = async () => {
       <div>
         <p>{user?.email}</p>
         <p>{user?.name}</p>
-      </div>
+      </div> */}
     </section>
   );
 };
