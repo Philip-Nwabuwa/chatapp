@@ -250,13 +250,13 @@ const LoginForm = () => {
         </div>
       </div>
       <div>
-        <Image
+        {/* <Image
           src="/Login.svg"
           className="w-full h-full"
           width={100}
           height={100}
           alt={""}
-        ></Image>
+        ></Image> */}
       </div>
     </section>
   );

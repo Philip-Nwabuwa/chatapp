@@ -1,18 +1,15 @@
 "use client";
 
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Image from "next/image";
 
-interface UserProps {
-  email: string | null | undefined;
-}
-
-const User: React.FC<UserProps> = ({ email }) => {
-  const { data: user } = useQuery({
+const User = () => {
+  const { data: user, isError } = useQuery({
     queryKey: ["userDetails"],
     queryFn: async () => {
-      const response = await axios.post("/api/user-details", { email });
+      const response = await axios.post("/api/user-details");
+      console.log(response.data);
       return response.data;
     },
   });

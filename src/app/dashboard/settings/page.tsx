@@ -13,7 +13,7 @@ const page = async () => {
 
   return (
     <div>
-      <User email={userEmail} />
+      <User />
     </div>
   );
 };
