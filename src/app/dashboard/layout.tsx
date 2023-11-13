@@ -14,6 +14,7 @@ import Link from "next/link";
 import React, { ReactNode } from "react";
 import ChatList from "@/components/modules/ChatList";
 import Logout from "@/components/Logout";
+import UserAvatar from "@/components/Avatar";
 
 interface LayoutProps {
   children: ReactNode;
@@ -43,7 +44,9 @@ const layout = async ({ children }: LayoutProps) => {
               </Link>
             </div>
             <div className="flex items-end justify-center cursor-pointer pb-6">
-              <Logout />
+              <Link href="/dashboard/profile" className="cursor-pointer">
+                <UserAvatar />
+              </Link>
             </div>
           </div>
         </div>
