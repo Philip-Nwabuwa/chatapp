@@ -6,9 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 import { UserCircle2 } from "lucide-react";
 
 const UserAvatar = () => {
+  const userDetails = useUserDetails();
+
   const { data: user } = useQuery({
     queryKey: ["userDetails"],
-    queryFn: () => useUserDetails(),
+    queryFn: () => userDetails,
   });
   return (
     <div className="border-2 border-solid border-white rounded-full">

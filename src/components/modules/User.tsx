@@ -5,9 +5,11 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
 const User = () => {
+  const userDetails = useUserDetails();
+
   const { data: user } = useQuery({
     queryKey: ["userDetails"],
-    queryFn: () => useUserDetails(),
+    queryFn: () => userDetails,
   });
 
   return (
